@@ -3,14 +3,14 @@
 steps:
 
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['build', '.', '-t', 'gcr.io/$PROJECT_ID/sanket-clouddeploy-image:${COMMIT_SHA}', '-f', 'Dockerfile']
+  args: ['build', '.', '-t', 'gcr.io/$PROJECT_ID/clouddeploy-image:${COMMIT_SHA}', '-f', 'Dockerfile']
 
 
 # Push the container image
 
 
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['push', 'gcr.io/$PROJECT_ID/sanket-clouddeploy-image:${COMMIT_SHA}']
+  args: ['push', 'gcr.io/$PROJECT_ID/clouddeploy-image:${COMMIT_SHA}']
 # Create release in Google Cloud Deploy
 
 
@@ -22,5 +22,5 @@ steps:
       "--delivery-pipeline", "gitops",
       "--region", "asia-east1",
       "--annotations", "commitId=${REVISION_ID}",
-      "--images", "sanket-clouddeploy-image=gcr.io/$PROJECT_ID/sanket-clouddeploy-image:${COMMIT_SHA}"
+      "--images", "sanket-clouddeploy-image=gcr.io/$PROJECT_ID/clouddeploy-image:${COMMIT_SHA}"
     ]

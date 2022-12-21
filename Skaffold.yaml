@@ -4,7 +4,7 @@ metadata:
   name: git-ops
 build:
   artifacts:
-  - image: gcr.io/$PROJECT_ID/sanket-gitops-image
+  - image: gcr.io/$PROJECT_ID/gitops-image
     docker:
       dockerfile: dockerfile
 deploy:
